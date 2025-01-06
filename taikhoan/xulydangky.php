@@ -43,8 +43,9 @@ session_start();
                 $id = random_int(0, 100000);
                 $sql2 = "SELECT * FROM thanhvien WHERE MaTV = '".$id."'";
                 $kq2 = mysqli_query($kn, $sql2);
+                $row = mysqli_fetch_array($kq2);
 
-                while(mysqli_fetch_array($kq2)){$id = random_int(0, 100000); $kq2 = mysqli_query($kn, $sql2);}
+                while($row != null){$id = random_int(0, 100000); $sql2 = "SELECT * FROM thanhvien WHERE MaTV = '".$id."'"; $kq2 = mysqli_query($kn, $sql2); $row = mysqli_fetch_array($kq2);}
 
                 $sql2="insert into thanhvien values('".$id."','".$tdn."','".$mk."','".$ht."','".$email."','".$dc."','".$sdt."')";
                 $kq2=mysqli_query($kn, $sql2);

@@ -26,7 +26,17 @@
 
         // Kiểm tra kết quả truy vấn
         if (mysqli_num_rows($kq1)==1) {
-            $_SESSION["user"] = $tdn; // Đổi từ `$_session` thành `$_SESSION`
+            $_SESSION["user"] = $tdn;
+
+            $id = random_int(0, 100000);
+            $sql2 = "SELECT * FROM giohang WHERE id = '".$id."'";
+            $kq2 = mysqli_query($kn, $sql2);
+            $row = mysqli_fetch_array($kq2);
+
+            while($row != null){$id = random_int(0, 100000); $sql2 = "SELECT * FROM giohang WHERE id = '".$id."'"; $kq2 = mysqli_query($kn, $sql2); $row = mysqli_fetch_array($kq2);}
+
+            $_SESSION["user_giohang"] = $id;
+            
             echo "<script language='javascript'>
                 alert('Đăng nhập thành công');
                 window.location ='../index.php';

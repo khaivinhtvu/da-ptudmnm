@@ -29,6 +29,7 @@
     <!-- responsive style -->
     <link href="css/responsive.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -45,7 +46,6 @@
                     <img src="images/logo.jpg" alt="Logo" class="rounded-circle" style="width: 80px; height: 80px;">
                     <span class="text-white">Cửa Hàng Đồng Hồ</span>
                 </div>
-
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -93,7 +93,8 @@
                             if (isset($_SESSION["user"])) {
                                 echo ("<div class='quote_btn-container'>");
                                 echo ("<a href='giohang.php' class='text-white nav-link fw-bold'>Giỏ hàng</a>") . "<br>";
-                                echo ("<a href='thongtintaikhoan.php' class='text-white nav-link fw-bold'><i class='fa fa-user-circle'></i> Xem thông tin tài khoản</a>") . "<br>";
+                                echo ("<a href='danhsachhoadon.php' class='text-white nav-link fw-bold'>Hoá đơn</a>") . "<br>";
+                                echo ("<a href='thongtintaikhoan.php' class='text-white nav-link fw-bold'><i class='fa fa-user-circle'></i>Thông tin tài khoản</a>") . "<br>";
                                 echo ("<a href='taikhoan/dangxuat.php' class='text-white nav-link fw-bold'><i class='fas fa-sign-out-alt'></i> Đăng xuất </a>");
                                 echo ("</div>");
                             } else {
@@ -120,7 +121,7 @@
     <?php
     $currentURL = "$_SERVER[REQUEST_URI]";
     if ($currentURL == "/webbandongho/index.php") {
-        include "views\slider.php";
+        include "views/slider.php";
     }
     ?>
     <!-- end slider section -->

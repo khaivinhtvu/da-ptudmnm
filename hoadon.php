@@ -1,138 +1,132 @@
-<!DOCTYPE html>
-<html lang="vi">
+<?php include "views/header.php";
+if (!isset($_SESSION["user"])) {
+    echo "<script language=javascript>
+    alert('Bạn không có quyền trên trang này!'); window.location='index.php';
+</script>";
+} ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hóa Đơn - Shop Đồng Hồ</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-    .invoice-container {
-        margin-top: 50px;
-        padding: 30px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-    }
+<div class="container mt-4">
+    <?php
+    $tdn = $_SESSION["user"];
+    $id = $_POST["mahoadon"];
+    include("ketnoi/ketnoi.php");
+    $sql1 = "select * from hoadon where mahoadon = '" . $id . "'";
+    $kq1 = mysqli_query($kn, $sql1);
+    while ($row1 = mysqli_fetch_array($kq1)) {
+        $sql2 = "select * from chitietgio a, thanhvien b, sanpham c where a.masp = c.masp and a.matv = b.MaTV and b.Tendangnhap = '" . $tdn . "' and a.idgiohang= '" . $row1["idgiohang"] . "'";
+        $kq2 = mysqli_query($kn, $sql2);
+        if (mysqli_num_rows($kq2) > 0) {
+            $idgio = $row1["idgiohang"];
+            $sql3 = "select * from chitietgio a, thanhvien b, sanpham c where a.masp = c.masp and a.matv = b.MaTV and a.idgiohang= '" . $idgio . "'";
+            $kq3 = mysqli_query($kn, $sql3);
+            $row3 = mysqli_fetch_array($kq3);
 
-    .invoice-header,
-    .invoice-footer {
-        margin-bottom: 30px;
-    }
+            $sql4 = "select * from giohang where id= '" . $idgio . "'";
+            $kq4 = mysqli_query($kn, $sql4);
+            $row4 = mysqli_fetch_array($kq4);
 
-    .invoice-header h3,
-    .invoice-footer h5 {
-        font-weight: bold;
-    }
+            $sql5 = "select * from quantrivien where tendnqtv= '" . $row4["admin"] . "'";
+            $kq5 = mysqli_query($kn, $sql5);
+            $row5 = mysqli_fetch_array($kq5);
 
-    .invoice-table th,
-    .invoice-table td {
-        text-align: center;
-        padding: 10px;
-    }
-
-    .invoice-table th {
-        background-color: #007bff;
-        color: #fff;
-    }
-
-    .total-row td {
-        font-weight: bold;
-    }
-
-    .total-price {
-        color: #007bff;
-        font-size: 1.5rem;
-    }
-
-    .btn-print {
-        background-color: #28a745;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-    }
-
-    .btn-print:hover {
-        background-color: #218838;
-    }
-    </style>
-</head>
-
-<body>
-
-    <!-- Hóa Đơn -->
-    <div class="container invoice-container">
-        <div class="invoice-header text-center">
+            echo ("
+            <div class='container invoice-container'>
+            <div id='hoadon'>
+            <div class='invoice-header text-center'>
             <h3>Hóa Đơn Mua Hàng</h3>
             <p>Shop Đồng Hồ - Cửa hàng trực tuyến</p>
-            <p><strong>Ngày:</strong> <span id="invoice-date">15/12/2024</span></p>
-        </div>
-
-        <!-- Thông Tin Khách Hàng -->
-        <div class="row mb-4">
-            <div class="col-md-6">
-                <h5>Thông Tin Khách Hàng</h5>
-                <p><strong>Tên:</strong> Nguyễn Văn A</p>
-                <p><strong>Email:</strong> nguyen@example.com</p>
-                <p><strong>Số điện thoại:</strong> (+84) 123 456 789</p>
-                <p><strong>Địa chỉ:</strong> 123 Đường ABC, Quận XYZ, TP.HCM</p>
+            <p><strong>Ngày:</strong> <span id='invoice-date'>15/12/2024</span></p>
             </div>
-            <div class="col-md-6">
-                <h5>Thông Tin Giao Hàng</h5>
-                <p><strong>Địa chỉ giao hàng:</strong> 123 Đường ABC, Quận XYZ, TP.HCM</p>
-                <p><strong>Phương thức giao hàng:</strong> Giao hàng tận nơi</p>
-            </div>
-        </div>
 
-        <!-- Giỏ Hàng -->
-        <div class="invoice-table">
-            <table class="table table-bordered">
+            <div class='row mb-4'>
+            <div class='col-md-6'>
+                <h4>Thông Tin Khách Hàng</h4>
+                <p><strong>Mã thành viên:</strong> " . $row3["MaTV"] . " </p>
+                <p><strong>Tên:</strong> " . $row3["Hoten"] . " </p>
+                <p><strong>Email:</strong> " . $row3["Email"] . " </p>
+                <p><strong>Số điện thoại:</strong> " . $row3["Sdt"] . " </p>
+                <p><strong>Địa chỉ:</strong> " . $row3["Diachi"] . " </p>
+            </div>
+            <div class='col-md-6'>
+                <h4>Thông Tin Hoá đơn</h4>
+                <p><strong>Mã hoá đơn:</strong> " . $row1["mahoadon"] . "</p>
+                <p><strong>Mã giỏ hàng:</strong> " . $row1["idgiohang"] . "</p>
+                <p><strong>Ngày tạo giỏ hàng:</strong>  " . $row4["thoigian"] . "</p>
+                <p><strong>Ngày lập hoá đơn:</strong> " . $row1["ngaylap"] . "</p>
+            </div>
+            </div>");
+            echo ("<div class='invoice-table'>
+            <table class='table table-bordered'>
                 <thead>
                     <tr>
-                        <th>STT</th>
-                        <th>Sản Phẩm</th>
-                        <th>Số Lượng</th>
-                        <th>Đơn Giá</th>
-                        <th>Thành Tiền</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng mua</th>
+                        <th>Thành tiền (VNĐ)</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Đồng Hồ Thể Thao</td>
-                        <td>1</td>
-                        <td>1,200,000 VND</td>
-                        <td>1,200,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Đồng Hồ Chính Hãng</td>
-                        <td>1</td>
-                        <td>2,500,000 VND</td>
-                        <td>2,500,000 VND</td>
-                    </tr>
-                    <tr class="total-row">
-                        <td colspan="4" class="text-end">Tổng Cộng:</td>
-                        <td class="total-price">3,700,000 VND</td>
-                    </tr>
+                <tbody>");
+
+                $tong = 0;
+                while ($row2 = mysqli_fetch_array($kq2)) {
+                $tong = $tong + ($row2["soluongmua"] * $row2["gia"]);
+                echo ("<tr>
+                              <td>" . $row2["tensp"] . "</td>
+                              <td>" . $row2["gia"] . " VNĐ</td>
+                              <td>" . $row2["soluongmua"] . "</td>
+                              <td align='right'>" . $row2["soluongmua"] * $row2["gia"] . " VNĐ</td>
+                        </tr>");
+                }
+                echo ("<tr>
+                            <td colspan='3' align='right'><b>Tổng tiền</b></td>
+                            <td colspan='3' align='right'><b>" . $tong . " VNĐ</b></td>
+                    </tr>");
+                echo("
                 </tbody>
-            </table>
-        </div>
+                </table>
+                </div>
+                </div>");
 
-        <!-- Phương Thức Thanh Toán -->
-        <div class="invoice-footer">
-            <h5>Phương Thức Thanh Toán</h5>
-            <p><strong>Thanh toán khi nhận hàng</strong></p>
-            <!-- Nút In Hóa Đơn -->
-            <div class="text-center">
-                <button class="btn-print" onclick="window.print()">In Hóa Đơn</button>
-            </div>
-        </div>
+            echo ("<div class='text-center'>
+            <button class='btn btn-primary btn-checkout' onclick='printDiv()'>In Hóa Đơn</button>
+            </div> 
+            </div>");    
+        }
+    }
+    ?>
+</div>
+<br>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+<script>
+        function printDiv() {
+            let divContents = document.getElementById("hoadon").innerHTML;
+            let printWindow = window.open('', '', 'height=500, width=1000');
+            printWindow.document.open();
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>Hoá đơn điện tử</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; }
+                        table { width: 100%; border-collapse: collapse; }
+                        th, td { border: 1px solid #ddd; padding: 8px; }
+                        th { background-color: #f4f4f4; }
+                    </style>
+                </head>
+                <body>
+                    ${divContents}
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+</script>
 
-</html>
+<!-- info section -->
+<?php include "views/info.php" ?>
+<!-- end info_section -->
+
+<!-- footer section -->
+<?php include "views/footer.php" ?>
+<!-- footer section -->
