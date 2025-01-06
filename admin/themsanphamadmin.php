@@ -7,7 +7,7 @@ alert('Bạn không có quyền trên trang này!'); window.location='../index.p
 <div class="container my-4">
     <h1 class="text-center text-primary">Nhập thông tin sản phẩm</h1>
 
-    <form class='my-4 fw-bold' id="addSanPhamForm">
+    <form class='my-4 fw-bold' id="addSanPhamForm" enctype='multipart/form-data'>
         <div class='mb-3'>
             <label class='form-label'><i class='bi bi-hash'></i> Mã sản phẩm</label>
             <input type="text" id="newMasp" class='form-control' placeholder="Mã sản phẩm" required>
@@ -34,7 +34,7 @@ alert('Bạn không có quyền trên trang này!'); window.location='../index.p
         </div>
         <div class='mb-3'>
             <label class='form-label'><i class='bi bi-tags-fill text-dark'></i> Số lượng</label>
-            <input type="text" id="newSoluong" class='form-control' placeholder="" required>
+            <input type="number" id="newSoluong" class='form-control' placeholder="" required>
         </div>
         <button type="submit" class='btn btn-success'><i class="bi bi-plus-circle"></i> Thêm sản phẩm</button>
     </form>

@@ -41,7 +41,7 @@
         }
         </style>
         <nav class="bg-info navbar navbar-expand-lg custom_nav-container">
-            <a class="navbar-brand d-flex align-items-center" href="index.php">
+            <a class="navbar-brand d-flex align-items-center" href="../index.php">
                 <div class="me-3 my-3 mb-3">
                     <img src="../images/logo.jpg" alt="Logo" class="rounded-circle" style="width: 80px; height: 80px;">
                     <span class="text-white">Cửa Hàng Đồng Hồ</span>
@@ -74,7 +74,17 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="text-white nav-link fw-bold" href="">
+                            <a class="text-white nav-link fw-bold" href="../admin/giohangadmin.php">
+                                <i class="fa fa-cogs"></i> Danh Sách Giỏ Hành
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="text-white nav-link fw-bold" href="../admin/hoadonadmin.php">
+                                <i class="fa fa-cogs"></i> Danh Sách Hoá Đơn
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="text-white nav-link fw-bold" href="../admin/thongkeadmin.php">
                                 <i class="fa fa-chart-pie"></i> Thống Kê
                             </a>
                         </li>
@@ -83,7 +93,7 @@
             </div>
 
             <?php
-                if (isset($_SESSION["user"])) {
+                if (isset($_SESSION["qtri"])) {
                     echo ("<div class='quote_btn-container'>");
                     echo ("<a href='../taikhoan/dangxuat.php' class='text-white nav-link text-decoration-none fw-bold'><i class='fas fa-sign-out-alt'></i> Đăng xuất </a>");
                     echo ("</div>");
