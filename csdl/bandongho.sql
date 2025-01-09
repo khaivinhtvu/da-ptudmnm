@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 25, 2024 lúc 12:41 PM
+-- Thời gian đã tạo: Th1 09, 2025 lúc 11:11 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -31,9 +31,21 @@ CREATE TABLE `chitietgio` (
   `masp` varchar(11) NOT NULL,
   `idgiohang` varchar(10) NOT NULL,
   `idchitiet` int(11) NOT NULL,
-  `soluong` int(11) NOT NULL,
+  `soluongmua` int(11) NOT NULL,
   `matv` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `chitietgio`
+--
+
+INSERT INTO `chitietgio` (`masp`, `idgiohang`, `idchitiet`, `soluongmua`, `matv`) VALUES
+('03', '80059', 18, 1, '16850'),
+('01', '21789', 19, 3, '16850'),
+('02', '21789', 20, 1, '16850'),
+('01', '68148', 21, 2, '16850'),
+('06', '86003', 22, 1, '67758'),
+('05', '86003', 23, 1, '67758');
 
 -- --------------------------------------------------------
 
@@ -48,6 +60,17 @@ CREATE TABLE `giohang` (
   `trangthai` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `giohang`
+--
+
+INSERT INTO `giohang` (`id`, `admin`, `thoigian`, `trangthai`) VALUES
+('', '', '2025-01-09', 0),
+('21789', 'adminan', '2025-01-06', 2),
+('68148', 'adminan', '2025-01-08', 2),
+('80059', 'adminan', '2025-01-04', 2),
+('86003', 'adminan', '2025-01-09', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -55,12 +78,22 @@ CREATE TABLE `giohang` (
 --
 
 CREATE TABLE `hoadon` (
-  `mahoadon` varchar(10) NOT NULL,
+  `mahoadon` int(20) NOT NULL,
   `ngaylap` date DEFAULT NULL,
   `tongtien` int(10) NOT NULL,
-  `soluong` varchar(11) NOT NULL,
+  `idgiohang` varchar(10) NOT NULL,
   `hinhthucthanhtoan` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `hoadon`
+--
+
+INSERT INTO `hoadon` (`mahoadon`, `ngaylap`, `tongtien`, `idgiohang`, `hinhthucthanhtoan`) VALUES
+(2, '2025-01-06', 300000, '80059', ''),
+(3, '2025-01-08', 1200000, '21789', ''),
+(4, '2025-01-08', 600000, '68148', ''),
+(5, '2025-01-09', 1470000, '86003', '');
 
 -- --------------------------------------------------------
 
@@ -105,11 +138,11 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`masp`, `tensp`, `hinh`, `gia`, `mota`, `gia_km`, `soluong`) VALUES
-('01', 'đồng hồ 1', 'images/dh1.jpg', 300000, 'đồng hồ treo tường', 250000, 15),
-('02', 'Đồng hồ 22', 'images/dh2.jpg', 300000, 'Đồng hồ treo tường', 250000, 10),
-('03', 'Đồng hồ 3', 'images/dh3.jpg', 300000, 'Đồng hồ treo tường', 250000, 10),
-('05', 'Đồng Hồ Đeo Tay B2', 'images/dh5.jpg', 700000, 'Đồng hồ đeo tay xanh lục', 650000, 15),
-('06', 'Đồng Hồ Đeo Tay C3', 'images/dh6.jpg', 770000, 'Đồng hồ đeo tay cổ điển', 700000, 20);
+('01', 'đồng hồ 1', 'images/dh1.jpg', 300000, 'đồng hồ treo tường', 250000, 11),
+('02', 'Đồng hồ 22', 'images/dh2.jpg', 300000, 'Đồng hồ treo tường', 250000, 9),
+('03', 'Đồng hồ 3', 'images/dh3.jpg', 300000, 'Đồng hồ treo tường', 250000, 9),
+('05', 'Đồng Hồ Đeo Tay B2', 'images/dh5.jpg', 700000, 'Đồng hồ đeo tay xanh lục', 650000, 14),
+('06', 'Đồng Hồ Đeo Tay C3', 'images/dh6.jpg', 770000, 'Đồng hồ đeo tay cổ điển', 700000, 19);
 
 -- --------------------------------------------------------
 
@@ -132,10 +165,8 @@ CREATE TABLE `thanhvien` (
 --
 
 INSERT INTO `thanhvien` (`MaTV`, `Tendangnhap`, `Matkhau`, `Hoten`, `Email`, `Diachi`, `Sdt`) VALUES
-('123', 'matv', 'c4cff18ef82d28fca4217457424dca08', 'matv', 'matv', 'matv', 'matv'),
 ('16850', 'abc', 'e10adc3949ba59abbe56e057f20f883e', 'Nguyễn A', 'ABC@gmail.com', 'Bến Tre', '0123456789'),
-('21170', 'xyz', '827ccb0eea8a706c4c34a16891f84e7b', 'Lê Văn B', 'B@gmail.com', 'Trà Vinh', '0123456789'),
-('92287', 'tranvanb', '01cfcd4f6b8770febfb40cb906715822', 'Trần Văn B', 'VanB@gmail.com', 'Vĩnh Long', '0987654321');
+('67758', 'xyz', '202cb962ac59075b964b07152d234b70', 'Trần Lê', 'xyz@email.com', 'Trà Vinh', '1234567890');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -145,8 +176,7 @@ INSERT INTO `thanhvien` (`MaTV`, `Tendangnhap`, `Matkhau`, `Hoten`, `Email`, `Di
 -- Chỉ mục cho bảng `chitietgio`
 --
 ALTER TABLE `chitietgio`
-  ADD PRIMARY KEY (`idchitiet`),
-  ADD KEY `rang_buot_id_gio` (`idgiohang`);
+  ADD PRIMARY KEY (`idchitiet`);
 
 --
 -- Chỉ mục cho bảng `giohang`
@@ -177,6 +207,22 @@ ALTER TABLE `sanpham`
 --
 ALTER TABLE `thanhvien`
   ADD PRIMARY KEY (`MaTV`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `chitietgio`
+--
+ALTER TABLE `chitietgio`
+  MODIFY `idchitiet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT cho bảng `hoadon`
+--
+ALTER TABLE `hoadon`
+  MODIFY `mahoadon` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
