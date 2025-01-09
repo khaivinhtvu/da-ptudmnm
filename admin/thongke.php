@@ -7,64 +7,61 @@ if (!isset($_SESSION["qtri"])) {
 } ?>
 
 <?php
-if(isset($_POST["thongke"])){
-	include("../ketnoi/ketnoi.php");
-	$xacnhan = $_POST["thang"];
-	$time = explode("-", $xacnhan);
-	$sql1 = "SELECT * FROM hoadon WHERE MONTH(ngaylap) = '".$time[1]."' AND YEAR(ngaylap) = '".$time[0]."'";
-	$kq1 = mysqli_query($kn, $sql1);
-	$dataPoints = [];
-	$tong = 0;
-	$ngay = 0;
-	$numrow = mysqli_num_rows($kq1);
-	while ($row1 = mysqli_fetch_array($kq1)) {
-		$sql2 = "SELECT CAST(DATE_FORMAT(ngaylap, '%d') as UNSIGNED) FROM hoadon WHERE mahoadon = '" . $row1['mahoadon'] . "'";
-		$kq2 = mysqli_query($kn, $sql2);
-		$row2 = mysqli_fetch_array($kq2);
-	
-		if ($ngay == 0) {
-			$ngay = $row2[0];
-			$tong = $row1["tongtien"];
-			$numrow = $numrow - 1;
-		} else if ($ngay == $row2[0]) {
-			$tong = $tong + $row1["tongtien"];
-			$numrow = $numrow - 1;
-			if ($numrow == 0) {
-				$data = array("x" => $ngay, "y" => $tong);
-				$dataPoints[] = $data;
-				$ngay = 0;
-				$tong = 0;
-			}
-		} else if ($ngay != $row2[0]) {
+include("../ketnoi/ketnoi.php");
+$xacnhan = $_POST["thang"];
+$time = explode("-", $xacnhan);
+$thang = $time[1];
+$sql1 = "SELECT * FROM hoadon WHERE MONTH(ngaylap) = '".$thang."'";
+$kq1 = mysqli_query($kn, $sql1);
+$dataPoints = [];
+$tong = 0;
+$ngay = 0;
+$numrow = mysqli_num_rows($kq1);
+while ($row1 = mysqli_fetch_array($kq1)) {
+	$sql2 = "SELECT CAST(DATE_FORMAT(ngaylap, '%d') as UNSIGNED) FROM hoadon WHERE mahoadon = '" . $row1['mahoadon'] . "'";
+	$kq2 = mysqli_query($kn, $sql2);
+	$row2 = mysqli_fetch_array($kq2);
+
+	if ($ngay == 0) {
+		$ngay = $row2[0];
+		$tong = $row1["tongtien"];
+		$numrow = $numrow - 1;
+	} else if ($ngay == $row2[0]) {
+		$tong = $tong + $row1["tongtien"];
+		$numrow = $numrow - 1;
+		if ($numrow == 0) {
 			$data = array("x" => $ngay, "y" => $tong);
 			$dataPoints[] = $data;
-			$ngay = $row2[0];
-			$tong = $row1["tongtien"];
-			$numrow = $numrow - 1;
-			if ($numrow == 0) {
-				$data = array("x" => $ngay, "y" => $tong);
-				$dataPoints[] = $data;
-				$ngay = 0;
-				$tong = 0;
-			}
+			$ngay = 0;
+			$tong = 0;
 		}
-	};
-}else{
-	$dataPoints = [];
-}
+	} else if ($ngay != $row2[0]) {
+		$data = array("x" => $ngay, "y" => $tong);
+		$dataPoints[] = $data;
+		$ngay = $row2[0];
+		$tong = $row1["tongtien"];
+		$numrow = $numrow - 1;
+		if ($numrow == 0) {
+			$data = array("x" => $ngay, "y" => $tong);
+			$dataPoints[] = $data;
+			$ngay = 0;
+			$tong = 0;
+		}
+	}
+};
 ?>
 <div class="container mt-4">
 
 	<div class='invoice-header text-center'>
 		<h3>Thống kê doanh thu</h3>
 	</div>
-	<form action="../admin/thongkeadmin.php" method="POST">
+	<form action="../admin/thongke.php" method="POST">
 		<div class="box">
 			<h5>
 				Chọn tháng thống kê
 			</h5>
 			<input id="thang" name="thang" type="month">
-			<button id="thongke" name="thongke" class="btn btn-primary text-white" type="submit">Thống kê</button>
+			<button class="btn btn-primary text-white" type="submit">Thống kê</button>
 		</div>
 	</form>
 	<div id="chartContainer" style="height: 370px; width: 100%;"></div>

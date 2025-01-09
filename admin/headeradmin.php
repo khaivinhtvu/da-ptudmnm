@@ -79,7 +79,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="text-white nav-link fw-bold" href="../admin/hoadonadmin.php">
+                            <a class="text-white nav-link fw-bold" href="../admin/danhsachhoadonadmin.php">
                                 <i class="fa fa-cogs"></i> Danh Sách Hoá Đơn
                             </a>
                         </li>
