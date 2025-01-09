@@ -35,7 +35,6 @@ if (!isset($_SESSION["user"])) {
             <div class='invoice-header text-center'>
             <h3>Hóa Đơn Mua Hàng</h3>
             <p>Shop Đồng Hồ - Cửa hàng trực tuyến</p>
-            <p><strong>Ngày:</strong> <span id='invoice-date'>15/12/2024</span></p>
             </div>
 
             <div class='row mb-4'>

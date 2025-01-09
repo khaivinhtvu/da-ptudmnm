@@ -1,4 +1,8 @@
-<?php include "views/header.php" ?>
+<?php include "views/header.php"; if (!isset($_SESSION["user"])) {
+    echo "<script language=javascript>
+alert('Bạn không có quyền trên trang này!'); window.location='index.php';
+</script>";
+}?>
 
 <section class="furniture_section layout_padding">
     <div class="container bg-info detail-box">

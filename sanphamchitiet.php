@@ -45,7 +45,7 @@
                 </div>
 
                 <div class='col-md-6 col-lg-4'>
-                <form action='' method='post'>
+                <form action='giohang/muahang.php' method='post'>
                 <div class='box'>
                 <div class='detail-box'>
                 <div class='price_box'>
@@ -57,13 +57,14 @@
                 <h6 class='price_heading'>
                     Số lượng mua: 
                 </h6>
-                <input type='number' id='soluong' name='soluong' min='1' max='500'>
+                <input type='number' id='soluong' name='soluong' min='1' value='1' max='500'>
                 </div>
                 <div class='price_box'>
                 <h6 class='price_heading'>
                     Giá: " . $row["gia"] . "<span> VND</span>
                 </h6>
                 </div>
+                <input type='hidden' id='masp' name='masp' value = '".$row["masp"]."'>
                 <button type='submit' name='sbmthemvaogio' class='btn btn-primary text-white'>Thêm vào giỏ hàng</button>
                 </div>
                 </div>
