@@ -34,6 +34,7 @@ if (!isset($_SESSION["user"])) {
             echo ("<tr>
                 <td>Mã hoá đơn: " . $row1["mahoadon"] . "</td>
                 <td>Mã giỏ hàng: " . $row1["idgiohang"] . "</td>
+                <td>Hình thúc thanh toán: " . $row1["hinhthucthanhtoan"] . "</td>
                 </tr>");
             echo ("<tr>
                 <td>Tên khách hàng: " . $row3["Hoten"] . "</td>

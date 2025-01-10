@@ -17,7 +17,7 @@
             <div class="col-md-6 col-lg-4 mx-auto">
                 <div class="box">
                     <div class="img-box">
-                        <img src="images/tintuc.webp" alt="">
+                        <img src="images/tintuc.webp" height="300" alt="">
                     </div>
                     <div class="detail-box">
                         <h6 class="text-purple">
@@ -35,7 +35,7 @@
             <div class="col-md-6 col-lg-4 mx-auto">
                 <div class="box">
                     <div class="img-box">
-                        <img src="images/tintuc2.avif" alt="">
+                        <img src="images/tintuc2.avif" height="300" alt="">
                     </div>
                     <div class="detail-box">
                         <h6 class="text-purple">
@@ -53,7 +53,7 @@
             <div class="col-md-6 col-lg-4 mx-auto">
                 <div class="box">
                     <div class="img-box">
-                        <img src="images/tintuc.avif" alt="">
+                        <img src="images/tintuc.avif" height="300" alt="">
                     </div>
                     <div class="detail-box">
                         <h6 class="text-purple">

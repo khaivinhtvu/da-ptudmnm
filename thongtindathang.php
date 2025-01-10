@@ -73,13 +73,13 @@ if (!isset($_SESSION["user"])) {
     <div class='mt-5'>
         <h2 class='section-title'>Phương Thức Thanh Toán</h2>
         <div class='form-check'>
-            <input class='form-check-input' type='radio' name='htthanhtoan' id='creditCard' value='0' checked>
+            <input class='form-check-input' type='radio' name='htthanhtoan' id='creditCard' value='0' required>
             <label class='form-check-label' for='creditCard'>
                 Thanh toán qua thẻ tín dụng
             </label>
         </div>
         <div class='form-check'>
-            <input class='form-check-input' type='radio' name='htthanhtoan' id='cashOnDelivery' value='1'>
+            <input class='form-check-input' type='radio' name='htthanhtoan' id='cashOnDelivery' value='1' required>
             <label class='form-check-label' for='cashOnDelivery'>
                 Thanh toán khi nhận hàng
             </label>

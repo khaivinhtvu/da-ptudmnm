@@ -52,6 +52,7 @@ if (!isset($_SESSION["user"])) {
                 <p><strong>Mã giỏ hàng:</strong> " . $row1["idgiohang"] . "</p>
                 <p><strong>Ngày tạo giỏ hàng:</strong>  " . $row4["thoigian"] . "</p>
                 <p><strong>Ngày lập hoá đơn:</strong> " . $row1["ngaylap"] . "</p>
+                <p><strong>Hình thức thanh toán:</strong> " . $row1["hinhthucthanhtoan"] . "</p>
             </div>
             </div>");
             echo ("<div class='invoice-table'>
