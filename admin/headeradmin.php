@@ -75,12 +75,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="text-white nav-link fw-bold" href="../admin/giohangadmin.php">
-                                <i class="fa fa-cogs"></i> Danh Sách Giỏ Hành
+                                <i class="fa fa-shopping-cart"></i> Danh Sách Giỏ Hàng
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="text-white nav-link fw-bold" href="../admin/danhsachhoadonadmin.php">
-                                <i class="fa fa-cogs"></i> Danh Sách Hoá Đơn
+                                <i class="fa fa-file-invoice"></i> Danh Sách Hoá Đơn
                             </a>
                         </li>
                         <li class="nav-item">

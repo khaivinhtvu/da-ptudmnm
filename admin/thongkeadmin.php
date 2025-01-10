@@ -7,11 +7,11 @@ if (!isset($_SESSION["qtri"])) {
 } ?>
 
 <?php
-if(isset($_POST["thongke"])){
+if (isset($_POST["thongke"])) {
 	include("../ketnoi/ketnoi.php");
 	$xacnhan = $_POST["thang"];
 	$time = explode("-", $xacnhan);
-	$sql1 = "SELECT * FROM hoadon WHERE MONTH(ngaylap) = '".$time[1]."' AND YEAR(ngaylap) = '".$time[0]."'";
+	$sql1 = "SELECT * FROM hoadon WHERE MONTH(ngaylap) = '" . $time[1] . "' AND YEAR(ngaylap) = '" . $time[0] . "'";
 	$kq1 = mysqli_query($kn, $sql1);
 	$dataPoints = [];
 	$tong = 0;
@@ -21,7 +21,7 @@ if(isset($_POST["thongke"])){
 		$sql2 = "SELECT CAST(DATE_FORMAT(ngaylap, '%d') as UNSIGNED) FROM hoadon WHERE mahoadon = '" . $row1['mahoadon'] . "'";
 		$kq2 = mysqli_query($kn, $sql2);
 		$row2 = mysqli_fetch_array($kq2);
-	
+
 		if ($ngay == 0) {
 			$ngay = $row2[0];
 			$tong = $row1["tongtien"];
@@ -49,7 +49,7 @@ if(isset($_POST["thongke"])){
 			}
 		}
 	};
-}else{
+} else {
 	$dataPoints = [];
 }
 ?>
@@ -79,7 +79,18 @@ if(isset($_POST["thongke"])){
 			exportEnabled: true,
 			theme: "light1", // "light1", "light2", "dark1", "dark2"
 			axisY: {
-				includeZero: true
+				includeZero: true,
+				title: "Doanh thu",
+				titleFontSize: 24,
+				suffix: " VNĐ"
+			},
+			axisX: {
+				includeZero: true,
+				titleFontSize: 24,
+				ticks: {
+							stepSize: 1,
+							beginAtZero: true,
+				}
 			},
 			data: [{
 				type: "line", //change type to bar, line, area, pie, etc

@@ -4,7 +4,7 @@ alert('Bạn không có quyền trên trang này!'); window.location='../index.p
 </script>";
 }?>
 <div class="container my-4">
-    <h1 class="text-center text-primary">Danh sách thành viên</h1>
+    <h1 class="text-center text-primary">Danh Sách Thành Viên</h1>
 
     <div class="my-4">
         <table class="table table-bordered table-hover" id="sanphamTable">

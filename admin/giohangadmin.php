@@ -7,6 +7,11 @@ if (!isset($_SESSION["qtri"])) {
 } ?>
 <div class="container mt-4">
     <h1 class="mb-4 text-center text-primary">Danh sách các giỏ hàng</h1>
+    <h2 class="mb-4 text-left text-primary">Ghi chú trạng thái:</h2>
+    <h5 class="mb-4 text-left">0: Đang mua hàng</h5>
+    <h5 class="mb-4 text-left">10: Đang chờ duyệt - Thanh toán bằng thẻ tín dụng</h5>
+    <h5 class="mb-4 text-left">11: Đang chờ duyệt - Thanh toán khi nhận hàng</h5>
+    <h5 class="mb-4 text-left">2: Đã duyệt</h5>
     <?php
     include("../ketnoi/ketnoi.php");
     $sql1 = "select * from giohang";
@@ -52,7 +57,7 @@ if (!isset($_SESSION["qtri"])) {
                             <td colspan='3' align='right'><b>" . $tong . " VNĐ</b></td>
                     </tr>");
             }
-        }else if ($row1["trangthai"] == 1) {
+        }else if ($row1["trangthai"] == 10 || $row1["trangthai"] == 11) {
             echo ("<form name='frmDSDuyet' action='../admin/duyetgiohang.php' method='POST'>");
             $sql2 = "select * from chitietgio a, thanhvien b, sanpham c where a.masp = c.masp and a.matv = b.MaTV and a.idgiohang= '" . $row1["id"] . "'";
             $kq2 = mysqli_query($kn, $sql2);
@@ -68,7 +73,7 @@ if (!isset($_SESSION["qtri"])) {
                 echo ("<tr>
                         <td>Thời gian tạo: " . $row1["thoigian"] . "</td>
                         <td>Mã giỏ hàng: " . $row1["id"] . "</td>
-                        <td>Trạng thái giỏ hàng: 1 - Đang chờ duyệt</td>
+                        <td>Trạng thái giỏ hàng: ". $row1["trangthai"] ." - Đang chờ duyệt</td>
                 </tr>");
 
                 echo ("<tr bgcolor='#92D84E' align='center'>

@@ -21,7 +21,7 @@ alert('Bạn không có quyền trên trang này!'); window.location='../index.p
                 <th>Mô Tả</th>
                 <th>Giá Khuyến Mãi</th>
                 <th>Số lượng</th>
-                <th>Hành Động</th>
+                <th>Thao tác</th>
             </tr>
         </thead>
         <tbody></tbody>
@@ -44,7 +44,7 @@ $(document).ready(function() {
                     "<td>" + sp.soluong + "</td>" +
                     "<td><form action='../admin/suasanphamadmin.php' method='post' class='d-inline'><input type='hidden' name='sanphamId' value='" +
                     sp.masp +
-                    "'><button name='editBtn' class='btn btn-warning btn-sm'>Chỉnh Sửa</button></form> <button class='deleteBtn btn btn-danger btn-sm'>Delete</button></td>" +
+                    "'><button name='editBtn' class='btn btn-warning btn-sm'>Chỉnh Sửa</button></form> <button class='deleteBtn btn btn-danger btn-sm'>Xoá</button></td>" +
                     "</tr>";
                 $('#sanphamTable tbody').append(row);
             });
