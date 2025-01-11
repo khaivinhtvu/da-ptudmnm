@@ -9,15 +9,22 @@ alert('Bạn không có quyền trên trang này!'); window.location='../index.p
     $tdn = $_SESSION["user"];
     $mk = md5($_POST['matkhau']);
     $idgiohang = $_POST['idgiohang'];
+    $thanhtoan = $_POST["htthanhtoan"];
     include("../ketnoi/ketnoi.php");
 
     $sql1 = "SELECT * FROM thanhvien WHERE Tendangnhap = '".$tdn."' AND Matkhau = '".$mk."'";
     $kq1 = mysqli_query($kn, $sql1);
 
     if (mysqli_num_rows($kq1)==1) {
-        $sql7 = "update giohang SET trangthai = '1' where id = '".$idgiohang."'";
-        $kq7 = mysqli_query($kn, $sql7);
-        
+
+        if ($thanhtoan == 0){
+            $sql7 = "update giohang SET trangthai = '10' where id = '".$idgiohang."'";
+            $kq7 = mysqli_query($kn, $sql7);
+        }else if($thanhtoan == 1){
+            $sql7 = "update giohang SET trangthai = '11' where id = '".$idgiohang."'";
+            $kq7 = mysqli_query($kn, $sql7);
+        }
+
         echo "<script language='javascript'>
             alert('Xác nhận thành công');
             window.location ='../giohang.php';
