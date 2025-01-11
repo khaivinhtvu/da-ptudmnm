@@ -28,7 +28,7 @@ Việc thực hiện đề tài này không chỉ đòi hỏi kiến thức về
 ---
 
 Chúng em tin rằng đề tài này không chỉ mang lại giá trị thực tiễn mà còn giúp chúng em phát triển bản thân và đóng góp một phần nhỏ vào sự phát triển của lĩnh vực thương mại điện tử.
-# Phần 1: Cơ SSở Lý Thuyết
+# Phần 1: Cơ Sở Lý Thuyết
 
 ## 1.1. Ngôn ngữ PHP
 
@@ -247,4 +247,87 @@ XAMPP là phần mềm mã nguồn mở giúp tạo môi trường máy chủ c�
 | tongtien         | Tổng tiền thanh toán          | INT(10)       | NOT NULL              |
 | idgiohang        | Mã giỏ hàng                   | VARCHAR(11)   | NOT NULL              |
 | hinhthucthanhtoan| Hình thức thanh toán          | VARCHAR(20)   | NOT NULL              |
+# Phần 3: Chức Năng Của Website
+
+## 3.2. Các Chức Năng Của Website
+
+### 3.2.1. Chức năng đăng nhập và đăng ký tài khoản
+- Người dùng và quản trị viên có thể đăng nhập vào hệ thống bằng tài khoản đã tạo trước đó. Hệ thống kiểm tra thông tin đăng nhập và cấp quyền truy cập nếu hợp lệ.
+- Cho phép người dùng đăng ký tài khoản mới bằng cách cung cấp các thông tin như họ tên, email, số điện thoại, địa chỉ và mật khẩu.
+- Người dùng và quản trị viên có thể đăng xuất tài khoản một cách an toàn sau khi sử dụng.
+
+### 3.2.2. Chức năng quản lý tài khoản
+- Người dùng có thể xem và cập nhật thông tin tài khoản cá nhân, bao gồm tên, địa chỉ, số điện thoại, và mật khẩu.
+- Quản trị viên có quyền xem danh sách tài khoản người dùng trong hệ thống.
+- Quản trị viên có thể tạo chỉnh sửa các tài khoản quản trị viên khác nếu cần, đảm bảo vai trò và trách nhiệm rõ ràng.
+
+### 3.2.3. Chức năng tìm kiếm và xem sản phẩm
+- Hỗ trợ tìm kiếm sản phẩm nhanh chóng bằng cách nhập từ khóa liên quan đến tên sản phẩm.
+- Cho phép xem thông tin chi tiết của từng sản phẩm, bao gồm hình ảnh, giá, mô tả sản phẩm, số lượng còn, giá bán.
+
+### 3.2.4. Chức năng thêm, sửa, xóa, và quản lý sản phẩm
+- Quản trị viên có thể thêm sản phẩm mới vào hệ thống với các thông tin như tên, hình ảnh, giá cả, số lượng tồn kho, và mô tả chi tiết.
+- Sửa đổi thông tin sản phẩm nếu có thay đổi về giá, số lượng, hoặc hình ảnh.
+- Xóa các sản phẩm không còn kinh doanh hoặc không còn tồn kho.
+
+### 3.2.5. Chức năng quản lý giỏ hàng
+- Người dùng có thể thêm sản phẩm vào giỏ hàng và xem danh sách các sản phẩm đã chọn, bao gồm tên sản phẩm, số lượng, và giá tiền.
+- Cho phép chỉnh sửa giỏ hàng: xóa sản phẩm khỏi giỏ hàng, hoặc hủy toàn bộ giỏ hàng nếu cần.
+- Hiển thị tổng giá trị của giỏ hàng.
+
+### 3.2.6. Chức năng thanh toán và hóa đơn
+- Người dùng có thể tiến hành thanh toán giỏ hàng qua các phương thức như thẻ tín dụng hoặc thanh toán khi nhận hàng.
+- Người dùng có thể xem lại các hóa đơn của mình.
+- Quản trị viên có thể xem danh sách các hóa đơn của tất cả các khách hàng.
+- Người dùng và quản trị viên có thể in hóa đơn nếu cần.
+
+### 3.2.7. Chức năng quản lý thanh toán
+- Quản trị viên có thể duyệt các giỏ hàng đang chờ thanh toán từ người dùng. Người dùng cần xác minh bằng mật khẩu trước khi tiến hành duyệt.
+- Hệ thống hỗ trợ ghi nhận trạng thái của giỏ hàng: đã duyệt, còn đang mua hàng, hoặc đang chờ duyệt.
+
+### 3.2.8. Chức năng thống kê doanh thu
+- Quản trị viên có thể xem báo cáo doanh thu theo các khoảng thời gian như ngày, tháng.
+- Thống kê doanh thu được hiển thị bằng giao diện biểu đồ.
+# Phần 4: Kết Luận Và Hướng Phát TriểnTriển
+
+## 4.1. KẾT QUẢ ĐẠT ĐƯỢC
+Sau khi hoàn thành dự án, nhóm chúng em đã đạt được những kết quả quan trọng như sau:
+- Hiểu rõ hơn về các bước triển khai một dự án thực tế trong lĩnh vực phát triển website.
+- Tích lũy thêm nhiều kiến thức và kinh nghiệm về lập trình web, đặc biệt là sử dụng PHP và MySQL.
+- Xây dựng thành công một website bán đồng hồ với giao diện thân thiện, dễ sử dụng, và các chức năng cơ bản như quản lý sản phẩm, giỏ hàng.
+
+## 4.2. ƯU NHƯỢC ĐIỂM
+
+### Ưu điểm
+- Giao diện thân thiện, dễ sử dụng, hỗ trợ tìm kiếm và mua sắm hiệu quả.
+- Các tính năng cơ bản như quản lý sản phẩm, giỏ hàng hoạt động ổn định.
+- Hệ thống có khả năng nâng cấp và tích hợp thêm các chức năng mới.
+
+### Nhược điểm
+Bên cạnh những thành công đạt được, nhóm chúng em cũng đã có những hạn chế nhất định trong đồ án như:
+- Mặt hiển thị chưa thật tốt, các nút công cụ chưa được bố trí hợp lý.
+- Chức năng thống kê chỉ có thống kê theo ngày hoặc tháng và chỉ có thống kê doanh thu, chưa có các thống kê khác như số lượng hàng bán được.
+- Chưa tích hợp tính năng thanh toán trực tuyến.
+
+## 4.3. HƯỚNG PHÁT TRIỂN
+
+- **Tìm hiểu về các phương pháp quản lý bán hàng khác:**
+  - Mở rộng các tính năng tiện ích như gợi ý sản phẩm dựa trên sở thích của khách hàng.
+  - Tích hợp thanh toán trực tuyến qua nhiều cổng thanh toán phổ biến.
+
+- **Nâng cấp hệ thống quản lý và phân tích dữ liệu:**
+  - Cung cấp báo cáo chi tiết hơn về doanh thu, hành vi mua sắm và thói quen khách hàng.
+
+- **Xây dựng các chương trình chăm sóc khách hàng:**
+  - Tích điểm, giảm giá hoặc ưu đãi đặc biệt cho khách hàng thường xuyên để tăng sự gắn bó và khuyến khích họ mua sắm nhiều hơn.
+
+## TÀI LIỆU THAM KHẢO
+
+### Sách/Giáo trình
+1. Đoàn Phước Miền & Phạm Thị Trúc Mai, *Thiết kế và lập trình web*, Trường Đại học Trà Vinh, 2017. 
+2. Thomas Powell, *HTML & CSS: The Complete Reference, Fifth Edition*, 5th Edition, McGraw-Hill, 2010.
+3. Phạm Quang Dũng, *Lập trình Java*, BM KHMT - Khoa CNTT - Trường ĐHNNI, 2017.
+
+### Website
+4. w3schools, "PHP Tutorial," [Online]. Available: [https://www.w3schools.com/php/default.asp](https://www.w3schools.com/php/default.asp). [Accessed 01 01 2025].
 
