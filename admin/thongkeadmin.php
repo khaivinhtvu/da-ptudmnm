@@ -55,53 +55,53 @@ if (isset($_POST["thongke"])) {
 ?>
 <div class="container mt-4">
 
-	<div class='invoice-header text-center'>
-		<h3>Thống kê doanh thu</h3>
-	</div>
-	<form action="../admin/thongkeadmin.php" method="POST">
-		<div class="box">
-			<h5>
-				Chọn tháng thống kê
-			</h5>
-			<input id="thang" name="thang" type="month">
-			<button id="thongke" name="thongke" class="btn btn-primary text-white" type="submit">Thống kê</button>
-		</div>
-	</form>
-	<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-	<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    <div class='invoice-header text-center'>
+        <h1 class="mb-4 text-center text-primary">Thống Kê Doanh Thu</h1>
+    </div>
+    <form action="../admin/thongkeadmin.php" method="POST">
+        <div class="box">
+            <h5>
+                Chọn tháng thống kê
+            </h5>
+            <input id="thang" name="thang" type="month">
+            <button id="thongke" name="thongke" class="btn btn-primary text-white" type="submit">Thống kê</button>
+        </div>
+    </form>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 </div>
 
 <script>
-	window.onload = function() {
+window.onload = function() {
 
-		var chart = new CanvasJS.Chart("chartContainer", {
-			animationEnabled: true,
-			exportEnabled: true,
-			theme: "light1", // "light1", "light2", "dark1", "dark2"
-			axisY: {
-				includeZero: true,
-				title: "Doanh thu",
-				titleFontSize: 24,
-				suffix: " VNĐ"
-			},
-			axisX: {
-				includeZero: true,
-				titleFontSize: 24,
-				ticks: {
-							stepSize: 1,
-							beginAtZero: true,
-				}
-			},
-			data: [{
-				type: "line", //change type to bar, line, area, pie, etc
-				//indexLabel: "{y}", //Shows y value on all Data Points
-				indexLabelFontColor: "#5A5757",
-				indexLabelPlacement: "outside",
-				dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-			}]
-		});
-		chart.render();
-	}
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        exportEnabled: true,
+        theme: "light1", // "light1", "light2", "dark1", "dark2"
+        axisY: {
+            includeZero: true,
+            title: "Doanh thu",
+            titleFontSize: 24,
+            suffix: " VNĐ"
+        },
+        axisX: {
+            includeZero: true,
+            titleFontSize: 24,
+            ticks: {
+                stepSize: 1,
+                beginAtZero: true,
+            }
+        },
+        data: [{
+            type: "line", //change type to bar, line, area, pie, etc
+            //indexLabel: "{y}", //Shows y value on all Data Points
+            indexLabelFontColor: "#5A5757",
+            indexLabelPlacement: "outside",
+            dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+        }]
+    });
+    chart.render();
+}
 </script>
 
 <?php include "../admin/infoadmin.php" ?>

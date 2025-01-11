@@ -6,8 +6,8 @@ if (!isset($_SESSION["qtri"])) {
             </script>");
 } ?>
 <div class="container mt-4">
-        <h1 class="mb-4 text-center text-primary">Danh sách các hoá đơn</h1>
-        <?php
+    <h1 class="mb-4 text-center text-primary">Danh Sách Các Hoá Đơn</h1>
+    <?php
         include("../ketnoi/ketnoi.php");
         $sql1 = "select * from hoadon";
         $kq1 = mysqli_query($kn, $sql1);
@@ -77,3 +77,102 @@ if (!isset($_SESSION["qtri"])) {
 </div>
 <?php include "../admin/infoadmin.php" ?>
 <?php include "../admin/footeradmin.php" ?>
+
+<style>
+/* Bảng */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+    border: 1px solid #dddddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e8f5ff;
+}
+
+/* Các dòng trạng thái */
+tr.bg-success {
+    background-color: #92d84e !important;
+}
+
+tr.bg-warning {
+    background-color: #ffe082 !important;
+}
+
+/* Dòng tiêu đề chi tiết sản phẩm */
+tr[bgcolor="#92D84E"] {
+    background-color: #28a745 !important;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Nút "Xem chi tiết" */
+.btn-checkout {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-checkout:hover {
+    background-color: #0056b3;
+}
+
+/* Tổng tiền */
+.table td[colspan="3"] {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    text-align: left;
+
+}
+
+/* Căn chỉnh */
+.text-end {
+    text-align: right;
+}
+
+/* Form */
+form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Khoảng cách */
+.mt-4 {
+    margin-top: 1.5rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+</style>
