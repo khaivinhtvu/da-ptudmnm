@@ -14,7 +14,6 @@
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
-                        Xem Thêm
                       </a>
                     </div>
                   </div>
@@ -40,7 +39,6 @@
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
-                        Xem Thêm
                       </a>
                     </div>
                   </div>
@@ -66,7 +64,6 @@
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
-                        Xem Thêm
                       </a>
                     </div>
                   </div>

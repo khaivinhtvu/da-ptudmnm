@@ -57,8 +57,10 @@
                 <!-- Tìm kiếm Sản phẩm -->
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
                 <div class="boxfooter searbox mt-3">
-                    <form action="sanphamtimkiem.php" method="post" class="input-group">
-                        <input type="text" class="form-control" name="kyw" placeholder="Tìm kiếm sản phẩm...">
+                    <form action="sanphamtimkiem.php" method="POST" class="input-group">
+                        <input type="text" class="form-control" id="txtTimkiem" name="txtTimkiem"
+                            placeholder="Tìm kiếm sản phẩm...">
+                        <input type="submit" name="sbmTimkiem" hidden>
                     </form>
                 </div>
                 <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
@@ -92,8 +94,8 @@
                         <?php
                             if (isset($_SESSION["user"])) {
                                 echo ("<div class='quote_btn-container'>");
-                                echo ("<a href='giohang.php' class='text-white nav-link fw-bold'>Giỏ hàng</a>") . "<br>";
-                                echo ("<a href='danhsachhoadon.php' class='text-white nav-link fw-bold'>Hoá đơn</a>") . "<br>";
+                                echo ("<a href='giohang.php' class='text-white nav-link fw-bold'><i class='fa fa-shopping-cart'></i> Giỏ hàng</a>") . "<br>";
+                                echo ("<a href='danhsachhoadon.php' class='text-white nav-link fw-bold'><i class='fa fa-file-invoice'></i> Hoá đơn</a>") . "<br>";
                                 echo ("<a href='thongtintaikhoan.php' class='text-white nav-link fw-bold'><i class='fa fa-user-circle'></i>Thông tin tài khoản</a>") . "<br>";
                                 echo ("<a href='taikhoan/dangxuat.php' class='text-white nav-link fw-bold'><i class='fas fa-sign-out-alt'></i> Đăng xuất </a>");
                                 echo ("</div>");
