@@ -37,7 +37,7 @@ switch ($method) {
 
     case 'DELETE':
         $id = $input['id'];
-        $kn->query("DELETE FROM giohang WHERE id=$id");
+        $kn->query("DELETE FROM giohang WHERE id='$id'");
         echo json_encode(["message" => "gio hang da duoc xoa"]);
         break;
 
