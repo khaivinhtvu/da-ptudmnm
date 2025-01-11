@@ -84,17 +84,17 @@ $(document).ready(function() {
         var row = $(this).closest('tr');
         var idchitiet = row.data('id');
         $.ajax({
-                url: "http://localhost/webbandongho/api/chitietgiohangapi.php",
-                type: "DELETE",
-                contentType: "application/json",
-                data: JSON.stringify({
-                    idchitiet: idchitiet
-                }),
-                success: function() {
-                    alert("Xoá sản phẩm thành công");
-                    location.reload();
-                }
-            });
+            url: "http://localhost/webbandongho/api/chitietgiohangapi.php",
+            type: "DELETE",
+            contentType: "application/json",
+            data: JSON.stringify({
+                idchitiet: idchitiet
+            }),
+            success: function() {
+                alert("Xoá sản phẩm thành công");
+                location.reload();
+            }
+        });
     });
 });
 </script>
@@ -106,3 +106,108 @@ $(document).ready(function() {
 <!-- footer section -->
 <?php include "views/footer.php" ?>
 <!-- footer section -->
+
+<style>
+/* Container của giỏ hàng */
+.cart-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Thông tin mã giỏ hàng và ngày tạo */
+h5 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Mục sản phẩm trong giỏ */
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.cart-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item-name,
+.cart-item-price {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* Số lượng sản phẩm */
+.cart-item input {
+    width: 60px;
+    text-align: center;
+    font-size: 1rem;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+/* Tổng cộng */
+.cart-total {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Nút hành động */
+button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #a71d2a;
+}
+
+.btn-checkout {
+    margin-left: 10px;
+}
+
+/* Tổng cộng và nút hành động */
+.cart-total,
+.cart-item-actions {
+    margin-top: 20px;
+}
+
+/* Bố cục hàng tổng cộng và nút */
+.row .text-end {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+</style>
