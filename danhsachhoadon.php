@@ -7,7 +7,7 @@ if (!isset($_SESSION["user"])) {
 } ?>
 
 <div class="container mt-4">
-    <h1 class="mb-4 text-center text-primary">Danh sách các hoá đơn của bạn</h1>
+    <h1 class="mb-4 text-center text-primary">Danh Sách Các Hoá Đơn Của Bạn</h1>
     <?php
     $tdn = $_SESSION["user"];
     include("ketnoi/ketnoi.php");
@@ -85,3 +85,95 @@ if (!isset($_SESSION["user"])) {
 <!-- footer section -->
 <?php include "views/footer.php" ?>
 <!-- footer section -->
+
+
+<style>
+/* Bảng hóa đơn */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+    border: 1px solid #dddddd;
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e8f5ff;
+}
+
+/* Tiêu đề dòng sản phẩm */
+tr[bgcolor="#92D84E"] {
+    background-color: #28a745 !important;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Số tiền và thông tin quan trọng */
+.table td[colspan="3"] {
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: right;
+
+}
+
+/* Nút hành động */
+button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-checkout {
+    margin-left: 10px;
+}
+
+/* Form */
+form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Khoảng cách */
+.mt-4 {
+    margin-top: 1.5rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+</style>
