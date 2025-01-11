@@ -122,4 +122,129 @@ XAMPP là phần mềm mã nguồn mở giúp tạo môi trường máy chủ c�
 - Không phù hợp cho môi trường sản xuất do cấu hình bảo mật chưa tối ưu.
 - Tiêu tốn tài nguyên hệ thống khi chạy trên máy cá nhân.
 - Cấu hình mặc định khác môi trường thực tế, có thể gây lỗi khi triển khai.
+# README
+
+## Phần 2: Phân Tích Thiết Kế Hệ Thống
+
+### 2.1. Mô Tả Đề Tài
+Đề tài này tập trung xây dựng một hệ thống quản lý và bán đồng hồ trực tuyến với các chức năng chính sau:
+
+- **Quản lý thành viên**: Người dùng có thể xem sản phẩm nhưng chỉ thành viên mới được phép mua hàng.
+- **Quản lý loại đồng hồ**: Mỗi loại đồng hồ được quản lý bằng mã loại, tên, và mô tả.
+- **Quản lý sản phẩm đồng hồ**: Mỗi đồng hồ có mã riêng, tên, thương hiệu, chất liệu, tính năng, màu sắc, kích thước, hình ảnh, giá và số lượng tồn kho.
+- **Quản lý tài khoản thành viên**: Thông tin cá nhân bao gồm tên đăng nhập, mật khẩu, họ tên, giới tính, ngày sinh, quốc tịch, và hình đại diện.
+- **Quy trình mua hàng**: Thành viên chọn sản phẩm, thêm vào giỏ hàng, và quản lý giỏ hàng trước khi được duyệt.
+- **Duyệt giỏ hàng**: Quản trị viên duyệt hoặc từ chối giỏ hàng. Sau khi duyệt, đơn hàng không thể hủy.
+- **Quản lý sản phẩm và loại sản phẩm**: Quản trị viên thêm mới loại và sản phẩm đồng hồ, cập nhật số lượng tồn kho.
+- **Tính năng chat**: Khách hàng có thể chat với nhau hoặc với quản trị viên.
+- **Thống kê doanh thu**: Quản trị viên xem doanh thu theo tuần, tháng, quý, và các sản phẩm bán chạy.
+
+---
+
+### 2.2. Phân Tích Thiết Kế Hệ Thống
+
+#### 2.2.1. Mô Hình Dữ Liệu Mức Quan Niệm (UML)
+
+**Sơ Đồ Lớp:**
+- **Lớp Quản trị viên**:
+  - ID (varchar)
+  - User_name (varchar)
+  - Pass_word (varchar)
+
+- **Lớp Thành viên**:
+  - MaTV (varchar)
+  - Tendangnhap (varchar)
+  - Matkhau (text)
+  - Hoten (varchar)
+  - Email (varchar)
+  - Diachi (varchar)
+  - SDT (varchar)
+
+- **Lớp Giỏ hàng**:
+  - MaSP (varchar)
+  - ID (varchar)
+  - Gia (int)
+  - Gia_KM (int)
+
+- **Lớp Hóa đơn**:
+  - Mahoadon (varchar)
+  - Ngaylap (Date)
+  - Tongtien (int)
+  - SoLuong (int)
+  - HinhThucThanhToan (varchar)
+
+- **Lớp Sản phẩm**:
+  - MaSP (varchar)
+  - TenSP (varchar)
+  - Hinh (Text)
+  - Gia (int)
+  - Mota (varchar)
+  - Gia_KM (varchar)
+
+**Mối quan hệ giữa các lớp:**
+- 1:N giữa Thành viên - Giỏ hàng, Thành viên - Hóa đơn.
+- 1:N giữa Giỏ hàng - Chi tiết giỏ.
+- N:1 giữa Chi tiết giỏ - Sản phẩm.
+- N:M giữa Hóa đơn - Sản phẩm.
+
+---
+
+#### 2.2.2. Mô Hình Dữ Liệu Mức Logic (MLD)
+
+##### **Bảng `quantrivien`**
+| Thuộc tính       | Mô tả                          | Kiểu dữ liệu  | Ràng buộc              |
+|------------------|--------------------------------|---------------|------------------------|
+| id               | Mã quản trị viên              | VARCHAR(20)   | PRIMARY KEY, NOT NULL |
+| tendnqtv         | Tên đăng nhập quản trị viên   | TEXT          | NOT NULL              |
+| tenqtv           | Tên của quản trị viên         | VARCHAR(50)   | NOT NULL              |
+| matkhauqtv       | Mật khẩu quản trị viên        | VARCHAR(50)   | NOT NULL              |
+| diachiqtv        | Địa chỉ của quản trị viên     | VARCHAR(50)   | NOT NULL              |
+| dtqtv            | Điện thoại của quản trị viên | VARCHAR(50)   | NOT NULL              |
+
+##### **Bảng `thanhvien`**
+| Thuộc tính       | Mô tả                          | Kiểu dữ liệu  | Ràng buộc              |
+|------------------|--------------------------------|---------------|------------------------|
+| MaTV             | Mã thành viên                 | VARCHAR(10)   | PRIMARY KEY, NOT NULL |
+| Tendangnhap      | Tên đăng nhập                 | VARCHAR(10)   | NOT NULL              |
+| Matkhau          | Mật khẩu                      | TEXT          | NOT NULL              |
+| Hoten            | Họ và tên                     | VARCHAR(50)   | NOT NULL              |
+| Email            | Email                         | VARCHAR(255)  | NOT NULL              |
+| Diachi           | Địa chỉ                       | VARCHAR(255)  | NOT NULL              |
+| Sdt              | Số điện thoại                 | VARCHAR(20)   | NOT NULL              |
+
+##### **Bảng `sanpham`**
+| Thuộc tính       | Mô tả                          | Kiểu dữ liệu  | Ràng buộc              |
+|------------------|--------------------------------|---------------|------------------------|
+| masp             | Mã sản phẩm                   | VARCHAR(10)   | PRIMARY KEY, NOT NULL |
+| tensp            | Tên sản phẩm                  | VARCHAR(50)   | NOT NULL              |
+| hinh             | Hình ảnh sản phẩm             | TEXT          | DEFAULT NULL          |
+| gia              | Giá sản phẩm                  | INT(10)       | NOT NULL, DEFAULT 0   |
+| mota             | Mô tả sản phẩm                | TEXT          | NOT NULL              |
+| gia_km           | Giá khuyến mãi                | INT(10)       | NOT NULL, DEFAULT 0   |
+
+##### **Bảng `giohang`**
+| Thuộc tính       | Mô tả                          | Kiểu dữ liệu  | Ràng buộc              |
+|------------------|--------------------------------|---------------|------------------------|
+| id               | Mã giỏ hàng                   | VARCHAR(10)   | PRIMARY KEY, NOT NULL |
+| admin            | Quản trị viên duyệt giỏ hàng  | VARCHAR(20)   | NOT NULL              |
+| thoigian         | Thời gian tạo giỏ hàng        | DATE          | NOT NULL              |
+| trangthai        | Trạng thái giỏ hàng           | INT(2)        | NOT NULL              |
+
+##### **Bảng `chitietgio`**
+| Thuộc tính       | Mô tả                          | Kiểu dữ liệu  | Ràng buộc              |
+|------------------|--------------------------------|---------------|------------------------|
+| masp             | Mã sản phẩm                   | VARCHAR(11)   | PRIMARY KEY, NOT NULL |
+| idgiohang        | Mã giỏ hàng                   | VARCHAR(10)   | FOREIGN KEY, NOT NULL |
+| idchitiet        | Mã chi tiết giỏ hàng          | INT(11)       | NOT NULL              |
+| soluongmua       | Số lượng mua hàng             | INT(11)       | NOT NULL              |
+| matv             | Mã thành viên                 | VARCHAR(20)   | NOT NULL              |
+
+##### **Bảng `hoadon`**
+| Thuộc tính       | Mô tả                          | Kiểu dữ liệu  | Ràng buộc              |
+|------------------|--------------------------------|---------------|------------------------|
+| mahoadon         | Mã hóa đơn                    | VARCHAR(10)   | PRIMARY KEY, NOT NULL |
+| ngaylap          | Ngày lập hóa đơn              | DATE          | DEFAULT NULL          |
+| tongtien         | Tổng tiền thanh toán          | INT(10)       | NOT NULL              |
+| idgiohang        | Mã giỏ hàng                   | VARCHAR(11)   | NOT NULL              |
+| hinhthucthanhtoan| Hình thức thanh toán          | VARCHAR(20)   | NOT NULL              |
 
